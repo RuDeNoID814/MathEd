@@ -225,6 +225,8 @@ body {
 .card-answer {
     padding: 14px;
     border-top: 1px solid var(--border);
+    overflow: hidden;
+    max-width: 100%;
 }
 
 .answer-label {
@@ -240,6 +242,8 @@ body {
     font-size: 13.5px;
     line-height: 1.8;
     color: #c8c8e8;
+    overflow: hidden;
+    max-width: 100%;
 }
 
 .answer-text p { margin-bottom: 8px; }
@@ -261,6 +265,7 @@ body {
     overflow-y: hidden;
     max-width: 100%;
     padding: 4px 0;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* EMPTY */
