@@ -225,8 +225,9 @@ body {
 .card-answer {
     padding: 14px;
     border-top: 1px solid var(--border);
-    overflow: hidden;
+    overflow-x: auto;
     max-width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
 
 .answer-label {

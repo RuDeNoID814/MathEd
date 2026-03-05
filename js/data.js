@@ -299,7 +299,8 @@ $$S=\\sum_{n=1}^\\infty (-1)^{n-1} \\cdot b_n,\\; b_n \\geq 0$$
         question: "Первый замечательный предел",
         answer: `$$\\lim_{x \\to 0} \\frac{\\sin(x)}{x} = 1$$
 В качестве числителя и знаменателя могут быть любые эквивалентные функции:
-$$x \\sim \\sin(x) \\sim \\tan(x) \\sim \\arcsin(x) \\sim \\arctan(x) \\sim \\ln(x + 1) \\sim e^x - 1 \\sim \\frac{a^x - 1}{\\ln(a)}$$
+$$x \\sim \\sin(x) \\sim \\tan(x) \\sim \\arcsin(x) \\sim \\arctan(x)$$
+$$\\sim \\ln(x + 1) \\sim e^x - 1 \\sim \\frac{a^x - 1}{\\ln(a)}$$
 А также
 $$1-\\cos(x) \\sim \\frac{x^2}{2}$$`
     },
@@ -321,7 +322,8 @@ $$1-\\cos(x) \\sim \\frac{x^2}{2}$$`
         id: 40,
         tag: "Пределы функций",
         question: "Примеры эквивалентных функций (таблица)",
-        answer: `$$x \\sim \\sin(x) \\sim \\tan(x) \\sim \\arcsin(x) \\sim \\arctan(x) \\sim \\ln(x + 1) \\sim e^x - 1 \\sim \\frac{a^x - 1}{\\ln(a)}$$
+        answer: `$$x \\sim \\sin(x) \\sim \\tan(x) \\sim \\arcsin(x) \\sim \\arctan(x)$$
+$$\\sim \\ln(x + 1) \\sim e^x - 1 \\sim \\frac{a^x - 1}{\\ln(a)}$$
 А также
 $$1-\\cos(x) \\sim \\frac{x^2}{2}$$`
     }
