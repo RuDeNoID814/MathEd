@@ -699,5 +699,11 @@ $$\\lim_{b\\to+\\infty}\\int_a^b f(x)dx = \\int_a^{+\\infty}f(x)dx$$`
 
 Если $\\exists$ конечный предел:
 $$\\lim_{b\\to B-}\\int_a^b f(x)dx=\\int_a^B f(x)dx$$`
+    },
+    {
+        id: 82,
+        tag: "Графики",
+        question: "Графики основных функций",
+        answer: `__GRAPH__`
     }
 ];

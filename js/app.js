@@ -82,24 +82,47 @@ function render() {
         return;
     }
 
-    list.innerHTML = items.map(d => `
+    list.innerHTML = items.map(d => {
+        const isGraph = d.answer === '__GRAPH__';
+        const bodyContent = isGraph ? buildGraphCard(d.id) : `
+            <div class="card-answer">
+                <div class="answer-label">Определение</div>
+                <div class="answer-text" id="ans-${d.id}">${formatAnswer(d.answer)}</div>
+            </div>`;
+        return `
     <div class="card ${openId === d.id ? 'open' : ''}" data-id="${d.id}">
         <div class="card-header" onclick="toggle(${d.id})">
             <div class="card-badge">${d.id}</div>
             <div class="card-question">${highlight(d.question, searchQuery)}</div>
             <div class="card-chevron">›</div>
         </div>
-        <div class="card-body">
-            <div class="card-answer">
-                <div class="answer-label">Определение</div>
-                <div class="answer-text" id="ans-${d.id}">${formatAnswer(d.answer)}</div>
-            </div>
-        </div>
-    </div>`).join('');
+        <div class="card-body">${bodyContent}</div>
+    </div>`;
+    }).join('');
 
     if (openId) {
         setTimeout(() => typeset(openId), 150);
     }
+}
+
+function buildGraphCard(id) {
+    const cardId = 'gc-' + id;
+    const items = GRAPHS.map((g, i) => `
+        <div class="graph-item ${i === 0 ? 'active' : ''}" data-graph="${g.id}">${g.label}</div>
+    `).join('');
+    return `
+        <div class="graph-card-inner" id="${cardId}">
+            <div class="graph-topbar">
+                <span class="graph-current-label">${GRAPHS[0].label}</span>
+                <button class="graph-burger">☰ Выбрать</button>
+            </div>
+            <canvas id="graph-canvas-${cardId}" width="320" height="240" style="width:100%;border-radius:8px;display:block;"></canvas>
+            <div class="graph-overlay"></div>
+            <div class="graph-sheet" id="graph-sheet-${cardId}">
+                <div class="graph-sheet-title">Функция</div>
+                ${items}
+            </div>
+        </div>`;
 }
 
 function typeset(id) {
@@ -114,9 +137,15 @@ function toggle(id) {
     render();
     if (!wasOpen) {
         setTimeout(() => {
+            typeset(id);
+            // init graph card if needed
+            const d = DATA.find(x => x.id === id);
+            if (d && d.answer === '__GRAPH__') {
+                initGraphCard('gc-' + id);
+            }
             const card = document.querySelector(`[data-id="${id}"]`);
             if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 100);
+        }, 150);
     }
 }
 

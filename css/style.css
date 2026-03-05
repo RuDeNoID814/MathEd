@@ -297,3 +297,97 @@ mark {
 }
 
 .spacer { height: max(env(safe-area-inset-bottom), 16px); }
+
+/* GRAPH CARD */
+.graph-card-inner {
+    position: relative;
+    padding: 14px;
+    border-top: 1px solid var(--border);
+}
+
+.graph-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.graph-current-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+}
+
+.graph-burger {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 12px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.graph-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 200;
+}
+
+.graph-sheet {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    border-radius: 20px 20px 0 0;
+    z-index: 201;
+    padding: 16px 0 max(env(safe-area-inset-bottom), 20px);
+    transition: bottom 0.3s cubic-bezier(0.4,0,0.2,1);
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.graph-sheet.open {
+    bottom: 0;
+}
+
+.graph-sheet.open ~ .graph-overlay,
+.graph-overlay:has(~ .graph-sheet.open) {
+    display: block;
+}
+
+.graph-card-inner:has(.graph-sheet.open) .graph-overlay {
+    display: block;
+}
+
+.graph-sheet-title {
+    font-size: 11px;
+    letter-spacing: 1.8px;
+    color: var(--muted);
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0 18px 10px;
+}
+
+.graph-item {
+    padding: 14px 18px;
+    font-size: 15px;
+    color: var(--text);
+    cursor: pointer;
+    font-family: 'DM Mono', monospace;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+}
+
+.graph-item:last-child { border-bottom: none; }
+.graph-item:active { background: var(--card2); }
+
+.graph-item.active {
+    color: var(--accent);
+    background: rgba(184,240,80,0.05);
+}
