@@ -266,12 +266,16 @@ body {
 }
 
 .mjx-container {
-    overflow-x: auto !important;
-    overflow-y: visible !important;
     max-width: 100%;
     padding: 4px 0;
-    -webkit-overflow-scrolling: touch;
     display: block !important;
+    font-size: 90% !important;
+}
+
+@media (max-width: 430px) {
+    .mjx-container {
+        font-size: 78% !important;
+    }
 }
 
 /* EMPTY */
