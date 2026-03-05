@@ -154,7 +154,7 @@ body {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    overflow: hidden;
+    overflow: visible;
     transition: border-color 0.2s;
 }
 
@@ -168,6 +168,7 @@ body {
     cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
+    border-radius: var(--radius);
 }
 
 .card-badge {
@@ -218,9 +219,13 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+    border-radius: 0 0 var(--radius) var(--radius);
 }
 
-.card.open .card-body { max-height: 9999px; }
+.card.open .card-body {
+    max-height: 9999px;
+    overflow: visible;
+}
 
 .card-answer {
     padding: 14px;
@@ -243,8 +248,7 @@ body {
     font-size: 13.5px;
     line-height: 1.8;
     color: #c8c8e8;
-    overflow: hidden;
-    max-width: 100%;
+    word-break: break-word;
 }
 
 .answer-text p { margin-bottom: 8px; }
@@ -262,11 +266,12 @@ body {
 }
 
 .mjx-container {
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
     max-width: 100%;
     padding: 4px 0;
     -webkit-overflow-scrolling: touch;
+    display: block !important;
 }
 
 /* EMPTY */
