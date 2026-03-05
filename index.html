@@ -1,13 +1,40 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MathEx</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        MathJax = {
+            tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+            options: { skipHtmlTags: ['script','noscript','style','textarea'] }
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
 </head>
 <body>
+    <div class="header">
+        <div class="header-top">
+            <div class="logo">MathEx</div>
+            <div class="counter" id="counter"></div>
+        </div>
+    <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input class="search-input" type="search" placeholder="Поиск по вопросам..." id="searchInput" autocomplete="off"
+        autocorrect="off" spellcheck="false">
+        <button class="clear-btn" id="clearBtn">✕</button>
+    </div>
+    </div>
 
+    <div class="tags-row" id="tagsRow"></div>
+    <div class="list" id="list"></div>
+    <div class="spacer"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
