@@ -1,0 +1,8 @@
+{
+  "name": "MathEx",
+  "short_name": "MathEx",
+  "start_url": "/MathEd/",
+  "display": "standalone",
+  "background_color": "#0b0b0e",
+  "theme_color": "#0b0b0e"
+}

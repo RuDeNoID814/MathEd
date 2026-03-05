@@ -46,16 +46,16 @@ function highlight(text, q) {
 
 function formatAnswer(text) {
     const blocks = [];
-    // Вырезаем $$ блоки, заменяем < и > на \lt \gt внутри них
-    text = text.replace(/\$\$[\s\S]*?\$\$/g, match => {
+    // Вырезаем все $$ и $ блоки
+    text = text.replace(/\$\$[\s\S]*?\$\$|\$[^\$\n]+?\$/g, match => {
         const key = `%%BLOCK_${blocks.length}%%`;
         const fixed = match.replace(/</g, '\\lt ').replace(/>/g, '\\gt ');
         blocks.push(fixed);
         return key;
     });
-    // Заменяем переносы строк в тексте
+    // Заменяем переносы строк
     text = text.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
-    // Возвращаем $$ блоки
+    // Возвращаем блоки
     blocks.forEach((block, i) => {
         text = text.replace(`%%BLOCK_${i}%%`, block);
     });
@@ -96,8 +96,6 @@ function render() {
         </div>
       </div>
     </div>`).join('');
-
-    if (openId) typeset(openId);
 }
 
 function typeset(id) {
@@ -111,11 +109,11 @@ function toggle(id) {
     openId = wasOpen ? null : id;
     render();
     if (!wasOpen) {
-        typeset(id);
         setTimeout(() => {
+            typeset(id);
             const card = document.querySelector(`[data-id="${id}"]`);
             if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 60);
+        }, 100);
     }
 }
 
